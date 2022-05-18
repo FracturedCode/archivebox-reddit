@@ -51,4 +51,3 @@ echog "Install script complete. This is a dumb script, so check for errors in th
 
 
 # TODO think about how logging is setup
-# TODO maybe have a cutoff so archivebox doesn't have to hunt whether or not stuff has already been archived
