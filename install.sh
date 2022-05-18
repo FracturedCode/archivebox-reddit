@@ -35,7 +35,7 @@ echog "Setting up account details"
 cp details_message.txt $ACCOUNT_DETAILS
 echo >> $ACCOUNT_DETAILS
 cat $ACCOUNT_DETAILS.example >> $ACCOUNT_DETAILS
-"${EDITOR:-nano}" $ACCOUNT_DETAILS
+"${EDITOR:-vi}" $ACCOUNT_DETAILS
 
 echog "Installing cron job for every 24 hours"
 ARCHIVEBOX_BIN = /home/ArchiveBox/archivebox/bin/archivebox-reddit/
