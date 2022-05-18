@@ -2,7 +2,7 @@
 
 LOG_FILE = /home/ArchiveBox/archivebox/logs/archivebox-reddit-saved-$(date "%Y-%m-%d").log
 
-echo "Grabbing saved from reddit" >> $LOG_FILE
-python export-saved-reddit/export_saved.py --all >> $LOG_FILE
-echo "Formatting export-saved-reddit output for archivebox" >> $LOG_FILE
+echo "Grabbing saved from reddit"
+python export-saved-reddit/export_saved.py --all
+echo "Formatting export-saved-reddit output for archivebox. Archivebox log file: $LOG_FILE"
 python format_csv.py | archivebox add >> $LOG_FILE
