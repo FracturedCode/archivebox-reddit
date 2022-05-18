@@ -1,0 +1,4 @@
+# You must input your reddit account details here. If you don't know what some of these parameters are read this:"
+# https://github.com/csu/export-saved-reddit#usage"
+# Additionally, this is a python script, so you must escape any special characters:"
+# https://www.w3schools.com/python/gloss_python_escape_characters.asp"

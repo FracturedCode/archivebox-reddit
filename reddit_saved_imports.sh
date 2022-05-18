@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# reddit_saved_imports.sh
+# support @ https://github.com/FracturedCode/archivebox-reddit
+# GPLv3
+
 LOG_FILE = /home/ArchiveBox/archivebox/logs/archivebox-reddit-saved-$(date "%Y-%m-%d").log
 
 echo "Grabbing saved from reddit"

@@ -1,9 +1,10 @@
 #!/bin/bash
-echog() {
-	GREEN='\033[0;32m'
-	NOCOLOR='\033[0m'
-	echo -e "${GREEN}${@}${NOCOLOR}"
-}
+
+# install.sh
+# support @ https://github.com/FracturedCode/archivebox-reddit
+# GPLv3
+
+source shared.sh
 
 echoAd() {
 	echo -e "${@}" >> $ACCOUNT_DETAILS
@@ -18,23 +19,20 @@ get_latest() {
 
 echog "Downloading and extracting source"
 TAR_FILE=$(get_latest tag_name).tar.gz
-curl --progress-bar -L -o $TAR_FILE $(get_latest tarball_url)
+curl --progress-bar -L -o $TAR_FILE $(get_latest browser_download_url)
 mkdir -p archivebox-reddit
 tar -xf $TAR_FILE -C ./archivebox-reddit
-SRC=archivebox-reddit/$(tar tf $TAR_FILE | head -1)
-ACCOUNT_DETAILS=${SRC}export-saved-reddit/AccountDetails.py
+cd archivebox-reddit
+ACCOUNT_DETAILS=export-saved-reddit/AccountDetails.py
 
-#echog "Downloading dependencies"
-#pip install -r ${SRC}export-saved-reddit/requirements.txt
-#
-#echog "Setting up account details"
-#cp $ACCOUNT_DETAILS.example $ACCOUNT_DETAILS
-#echoAd "# You must input your reddit account details here. If you don't know what some of these parameters are read this:"
-#echoAd "# https://github.com/csu/export-saved-reddit#usage"
-#echoAd "# Additionally, this is a python script, so you must escape any special characters:"
-#echoAd "# https://www.w3schools.com/python/gloss_python_escape_characters.asp"
-#nano $ACCOUNT_DETAILS
-#
+echog "Downloading dependencies"
+pip install -r export-saved-reddit/requirements.txt
+
+echog "Setting up account details"
+cp details_message.txt $ACCOUNT_DETAILS
+cat $ACCOUNT_DETAILS.example >> $ACCOUNT_DETAILS
+nano $ACCOUNT_DETAILS
+
 #echog "Installing cron job"
 #ARCHIVEBOX_BIN = /home/ArchiveBox/archivebox/bin/
 #cp ${SRC}reddit_saved_imports.sh $ARCHIVEBOX_BIN
@@ -46,4 +44,3 @@ ACCOUNT_DETAILS=${SRC}export-saved-reddit/AccountDetails.py
 
 # TODO think about how logging is setup
 # TODO maybe have a cutoff so archivebox doesn't have to hunt whether or not stuff has already been archived
-# TODO retool the accountdetails message
