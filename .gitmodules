@@ -1,3 +1,6 @@
 [submodule "export-saved-reddit"]
 	path = export-saved-reddit
 	url = https://github.com/csu/export-saved-reddit.git
+[submodule "git-archive-all.sh"]
+	path = git-archive-all.sh
+	url = https://github.com/fabacab/git-archive-all.sh
