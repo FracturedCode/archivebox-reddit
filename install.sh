@@ -4,6 +4,8 @@
 # support @ https://github.com/FracturedCode/archivebox-reddit
 # GPLv3
 
+curl https://raw.githubusercontent.com/FracturedCode/archivebox-reddit/master/shared.sh > shared.sh
+
 source shared.sh
 
 echoAd() {
