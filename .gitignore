@@ -1,4 +1,5 @@
 *.html
 *.csv
 *.tar.gz
+*.tar
 archivebox-reddit/
