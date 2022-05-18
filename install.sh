@@ -4,7 +4,7 @@
 # support @ https://github.com/FracturedCode/archivebox-reddit
 # GPLv3
 
-curl https://raw.githubusercontent.com/FracturedCode/archivebox-reddit/master/shared.sh > shared.sh
+curl -O https://raw.githubusercontent.com/FracturedCode/archivebox-reddit/master/shared.sh
 
 source shared.sh
 
