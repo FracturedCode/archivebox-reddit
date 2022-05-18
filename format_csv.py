@@ -7,7 +7,7 @@ if __name__=='__main__':
 		csvIter = csv.reader(exportFile)
 		next(csvIter)
 		libreddit = lambda y: re.sub('www.reddit.com', 'libredd.it', y, count=1)
-		eligibleSaves = [libreddit(x[0]) for x in csvIter if len(x) > 0 and not libreddit(x[0]) in saveHistory]
+		eligibleSaves = [libreddit(x[0])+'?context=9999' for x in csvIter if len(x) > 0 and not libreddit(x[0]) in saveHistory]
 		if any(eligibleSaves):
 			[print(y) for y in eligibleSaves]
 			lastSave.write(eligibleSaves)

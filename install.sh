@@ -43,9 +43,9 @@ cp export-saved-reddit/export_saved.py $ARCHIVEBOX_BIN
 cp export-saved-reddit/AccountDetails.py $ARCHIVEBOX_BIN
 echo '0 24 * * * archivebox ${ARCHIVEBOX_BIN}reddit_saved_imports.sh' > /etc/cron.d/archivebox_scheduled_reddit_saved_import
 
-
 echog "Nuking temporary source"
 rm -rf $UNZIPPED_TAR_DIR
+rm $TAR_FILE
 
 echog "Install script complete. This is a dumb script, so check for errors in the output"
 
