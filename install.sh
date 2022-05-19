@@ -4,6 +4,8 @@
 # support @ https://github.com/FracturedCode/archivebox-reddit
 # GPLv3
 
+echo Bootstrapping...
+
 if test ! -f "shared.sh"
 then
 	curl -O https://raw.githubusercontent.com/FracturedCode/archivebox-reddit/master/shared.sh
@@ -18,39 +20,49 @@ get_latest() {
     sed -E 's/.*"([^"]+)".*/\1/'
 }
 
-echog "Downloading and extracting temporary source"
-TAR_FILE=$(get_latest tag_name).tar.gz
-UNZIPPED_TAR_DIR=$TAR_FILE-unzipped
-curl --progress-bar -L -o $TAR_FILE $(get_latest browser_download_url)
-mkdir -p $UNZIPPED_TAR_DIR
-tar -xf $TAR_FILE -C ./$UNZIPPED_TAR_DIR
-cd $UNZIPPED_TAR_DIR
+if [ "$1" != "--docker" ]
+then
+	echog "Downloading and extracting temporary source"
+	TAR_FILE=$(get_latest tag_name).tar.gz
+	UNZIPPED_TAR_DIR=$TAR_FILE-unzipped
+	curl --progress-bar -L -o $TAR_FILE $(get_latest browser_download_url)
+	mkdir -p $UNZIPPED_TAR_DIR
+	tar -xf $TAR_FILE -C ./$UNZIPPED_TAR_DIR
+	cd $UNZIPPED_TAR_DIR
+fi
 
 echog "Installing praw via pip"
 pip install -r export-saved-reddit/requirements.txt
 
 
-if test ! -f "../AccountDetails.py"
+export ACCOUNT_DETAILS=export-saved-reddit/AccountDetails.py
+if [ "$1" != "--docker" ]
 then
-	ACCOUNT_DETAILS=export-saved-reddit/AccountDetails.py
-
 	echog "Setting up account details"
 	cp details_message.txt $ACCOUNT_DETAILS
 	echo >> $ACCOUNT_DETAILS
 	cat $ACCOUNT_DETAILS.example >> $ACCOUNT_DETAILS
 	"${EDITOR:-nano}" $ACCOUNT_DETAILS
-else
-	ACCOUNT_DETAILS=../AccountDetails.py	# This means we're in docker. There is no nano or vim so the config is copied during image build
-	# TODO move to environment variables
 fi
+# TODO move to environment variables
 
 echog "Installing cron job for every 24 hours"
-su archivebox -c "./install-helper.sh"
+export ARCHIVEBOX_BIN=/home/archivebox/archivebox-reddit/
+mkdir -p $ARCHIVEBOX_BIN
+INSTALL_FILES=("reddit_saved_imports.sh" "format_csv.py" "export-saved-reddit/export_saved.py" "$ACCOUNT_DETAILS" "cookies-libredd-it.txt")
+for file in $INSTALL_FILES
+do
+	cp $file $ARCHIVEBOX_BIN
+done
+chown -R archivebox:archivebox $ARCHIVEBOX_BIN
 echo '0 24 * * * archivebox ${ARCHIVEBOX_BIN}reddit_saved_imports.sh' > /etc/cron.d/archivebox_scheduled_reddit_saved_import
 
-echog "Nuking temporary source"
-rm -rf $UNZIPPED_TAR_DIR
-rm ../$TAR_FILE
+if [ "$1" != "--docker" ]
+then
+	echog "Nuking temporary source"
+	rm -rf $UNZIPPED_TAR_DIR
+	rm ../$TAR_FILE
+fi
 
 echog "Install script complete. This is a dumb script, so check for errors in the output"
 

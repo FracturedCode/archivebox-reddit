@@ -3,5 +3,12 @@ LABEL name="archivebox-reddit" \
 	maintainer="FracturedCode <gabe@fracturedcode.net>" \
 	description="An extension of archivebox for automatically archiving posts/comments from reddit saved"
 
-COPY export-saved-reddit/AccountDetails.py .
-RUN curl https://raw.githubusercontent.com/FracturedCode/archivebox-reddit/master/install.sh | /bin/bash
+COPY export-saved-reddit/AccountDetails.py export-saved-reddit/
+COPY export-saved-reddit/export_saved.py export-saved-reddit/
+COPY export-saved-reddit/requirements.txt export-saved-reddit/
+COPY install.sh .
+COPY shared.sh .
+COPY reddit_saved_imports.sh .
+COPY cookies-libredd-it.txt .
+
+RUN ./install.sh --docker

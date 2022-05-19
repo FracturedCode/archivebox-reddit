@@ -3,3 +3,4 @@
 *.tar.gz
 *.tar
 archivebox-reddit/
+*.sublime-workspace
