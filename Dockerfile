@@ -9,6 +9,5 @@ COPY install.sh .
 COPY shared.sh .
 COPY reddit_saved_imports.sh .
 COPY cookies-libredd-it.txt .
-COPY .env .
 
 RUN ./install.sh --dockerfile
