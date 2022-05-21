@@ -51,6 +51,16 @@ Build and run the docker image. It may take a while to download. (This project i
 - Add tagging support, this may require a PR to ArchiveBox
 - Make disabling 2FA unnecessary, probably will have to fork `export-saved-reddit`
 - Pipe dream: a mobile-friendly web UI in ArchiveBox that allows you to swipe between scrapes
+- Fix media download hanging randomly
+
+## Donate
+Did I save you some time or give you some piece of mind?
+
+XMR: 833jERVqZJBbVs1FS5f7R5Z4ufhsQXUcb6rHqfKoMuDG8HsxKrsKdEsdaf7aih9AeGfS7XRT7xEoPAFP2LNoYZMFLs3TJ4b
+![XMR QR Code](https://fracturedcode.net/assets/contact/xmrQr.png)
+
+More options [here](https://fracturedcode.net/contact)
+Or you could donate your time by submitting PRs or Issues.
 
 ## License
 [GPLv3](https://github.com/FracturedCode/archivebox-reddit/blob/master/LICENSE)
