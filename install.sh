@@ -32,20 +32,27 @@ then
 fi
 
 echog "Installing praw via pip"
-pip install -r export-saved-reddit/requirements.txt
+pip install -r requirements.txt
 
 echog "Installing cron job for every 24 hours"
 export ARCHIVEBOX_BIN=/home/archivebox/archivebox-reddit/
 mkdir -p $ARCHIVEBOX_BIN
-INSTALL_FILES=("reddit_saved_imports.sh" "format_csv.py" "export-saved-reddit/export_saved.py" "cookies-libredd-it.txt")
-for file in $INSTALL_FILES
+INSTALL_FILES=(reddit_saved_imports.sh format_csv.py export_saved.py cookies-libredd-it.txt yt-dlp.sh)
+for file in "${INSTALL_FILES[@]}"
 do
 	cp $file $ARCHIVEBOX_BIN
 done
+mkdir -p ${ARCHIVEBOX_BIN}/logs
 chown -R archivebox:archivebox $ARCHIVEBOX_BIN
 chmod +x "${ARCHIVEBOX_BIN}reddit_saved_imports.sh"
 chmod +x "${ARCHIVEBOX_BIN}yt-dlp.sh"
-echo '0 24 * * * archivebox ${ARCHIVEBOX_BIN}reddit_saved_imports.sh' > /etc/cron.d/archivebox_scheduled_reddit_saved_import
+echo "0 0 * * * archivebox ${ARCHIVEBOX_BIN}reddit_saved_imports.sh > /home/archivebox/archivebox-reddit/logs/log" > /etc/cron.d/archivebox_scheduled_reddit_saved_import
+
+
+echog Modifying entrypoint
+sed '2iservice cron start' /app/bin/docker_entrypoint.sh > /tmp/docker_entrypoint.sh
+mv /tmp/docker_entrypoint.sh /app/bin/docker_entrypoint.sh
+chmod 700 /app/bin/docker_entrypoint.sh
 
 if [ "$1" != "--dockerfile" ]
 then
