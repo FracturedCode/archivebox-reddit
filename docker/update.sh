@@ -1,5 +1,6 @@
 #!/bin/bash
-docker stop archivebox-reddit
-docker rm archivebox-reddit
+source .env
+docker stop $CONTAINER_NAME
+docker rm $CONTAINER_NAME
 ./build.sh
 ./run.sh
