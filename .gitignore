@@ -4,3 +4,4 @@
 *.tar
 archivebox-reddit/
 *.sublime-workspace
+.env
