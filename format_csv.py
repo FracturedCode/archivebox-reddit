@@ -1,14 +1,15 @@
 import csv
 import re
+import sys
 
 if __name__=='__main__':
 	saveHistory = {}
 	try:
-		with open('save_history.txt', mode='r') as saveHistoryFile:
+		with open('/data/archivebox_reddit_save_history.txt', mode='r') as saveHistoryFile:
 			saveHistory = set(line for line in saveHistoryFile.readlines())
 	except FileNotFoundError:
 		pass
-	with open('export-saved.csv', mode='r') as exportFile:
+	with open(sys.argv[1], mode='r') as exportFile:
 		csvIter = csv.reader(exportFile)
 		next(csvIter)
 		libreddit = lambda y: re.sub('www.reddit.com', 'libredd.it', y, count=1)
