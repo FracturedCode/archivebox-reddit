@@ -1,5 +1,0 @@
-# You must input your reddit account details here. If you don't know what some of these parameters are read this:
-# https://github.com/csu/export-saved-reddit#usage
-# Additionally, this is a python script, so you must escape any special characters:
-# https://www.w3schools.com/python/gloss_python_escape_characters.asp
-# The install script doesn't check if you got this right, so it is up to you to make sure it is correct.
