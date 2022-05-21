@@ -20,7 +20,7 @@ get_latest() {
     sed -E 's/.*"([^"]+)".*/\1/'
 }
 
-if [ "$1" != "--docker" ]
+if [ "$1" != "--dockerfile" ]
 then
 	echog "Downloading and extracting temporary source"
 	TAR_FILE=$(get_latest tag_name).tar.gz
@@ -34,34 +34,25 @@ fi
 echog "Installing praw via pip"
 pip install -r export-saved-reddit/requirements.txt
 
-
-export ACCOUNT_DETAILS=export-saved-reddit/AccountDetails.py
-if [ "$1" != "--docker" ]
-then
-	echog "Setting up account details"
-	cp details_message.txt $ACCOUNT_DETAILS
-	echo >> $ACCOUNT_DETAILS
-	cat $ACCOUNT_DETAILS.example >> $ACCOUNT_DETAILS
-	"${EDITOR:-nano}" $ACCOUNT_DETAILS
-fi
-# TODO move to environment variables
-
 echog "Installing cron job for every 24 hours"
 export ARCHIVEBOX_BIN=/home/archivebox/archivebox-reddit/
 mkdir -p $ARCHIVEBOX_BIN
-INSTALL_FILES=("reddit_saved_imports.sh" "format_csv.py" "export-saved-reddit/export_saved.py" "$ACCOUNT_DETAILS" "cookies-libredd-it.txt")
+INSTALL_FILES=("reddit_saved_imports.sh" "format_csv.py" "export-saved-reddit/export_saved.py" ".env" "cookies-libredd-it.txt")
 for file in $INSTALL_FILES
 do
 	cp $file $ARCHIVEBOX_BIN
 done
 chown -R archivebox:archivebox $ARCHIVEBOX_BIN
+chmod +x "${ARCHIVEBOX_BIN}reddit_saved_imports.sh"
+chmod +x "${ARCHIVEBOX_BIN}yt-dlp.sh"
 echo '0 24 * * * archivebox ${ARCHIVEBOX_BIN}reddit_saved_imports.sh' > /etc/cron.d/archivebox_scheduled_reddit_saved_import
 
-if [ "$1" != "--docker" ]
+if [ "$1" != "--dockerfile" ]
 then
 	echog "Nuking temporary source"
+	cd ..
 	rm -rf $UNZIPPED_TAR_DIR
-	rm ../$TAR_FILE
+	rm $TAR_FILE
 fi
 
 echog "Install script complete. This is a dumb script, so check for errors in the output"
