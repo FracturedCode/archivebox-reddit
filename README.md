@@ -31,6 +31,8 @@ cp .env.example .env
 "${EDITOR:-nano}" .env
 ```
 
+You can run this on an existing archivebox volume, but I'm not liable for data loss. Make sure you have a backup. Theoretically these scripts don't delete anything, but you never know.
+
 You must [acquire an api key](https://github.com/csu/export-saved-reddit#usage) from reddit, and enter your credentials in the `.env` file. Be sure to set good permissions on this file; it contains your reddit info! If you need, you can edit how this file is mounted in `run.sh`. Additionally, you will have to disable two factor. I am working on changing this.
 
 Build and run the docker image. It may take a while to download. (This project is tiny, but ArchiveBox is a 1.7GB image.):
