@@ -15,7 +15,7 @@ This works by executing a daily cron job which:
 1. Fetches your posts/saved posts from reddit with [export-saved-reddit](https://github.com/csu/export-saved-reddit)
 2. Converts the fetched URL list to [libreddit](https://github.com/spikecodes/libreddit) URLs to avoid rate limiting
 3. Prunes the list to those it has not scraped before
-4. Stuffs the list into `archivebox add`, and tags it the type of save ("reddit-saved", "reddit-comments", "reddit-submissions", "reddit-upvoted") (more tagging configurations available)
+4. Stuffs the list into `archivebox add`, and tags it with the type of save ("reddit-saved", "reddit-comments", "reddit-submissions", "reddit-upvoted") (more tagging configurations available)
 
 ## Installation
 Currently, only deploying via docker (+docker on WSL) is supported, but more configurations and use-cases are being worked on.
@@ -31,7 +31,7 @@ cp .env.example .env
 "${EDITOR:-nano}" .env
 ```
 
-You must [acquire an api key](https://github.com/csu/export-saved-reddit#usage) from reddit, and enter your credentials in the `.env` file. Be sure to set good permissions on this file; it contains your reddit info! If you need, you can edit how this file is mounted in `run.sh` Additionally, you will have to disable two factor. I am working on changing this.
+You must [acquire an api key](https://github.com/csu/export-saved-reddit#usage) from reddit, and enter your credentials in the `.env` file. Be sure to set good permissions on this file; it contains your reddit info! If you need, you can edit how this file is mounted in `run.sh`. Additionally, you will have to disable two factor. I am working on changing this.
 
 Build and run the docker image. It may take a while to download. (This project is tiny, but ArchiveBox is a 1.7GB image.):
 ``` Bash
