@@ -52,6 +52,7 @@ Build and run the docker image. It may take a while to download. (This project i
 - Pipe dream: a mobile-friendly web UI in ArchiveBox that allows you to swipe between scrapes
 - Fix media download hanging randomly
 - Multi account support
+- Retry Repl Unavailable
 
 ## Donate
 Did I save you some time or give you some piece of mind?
