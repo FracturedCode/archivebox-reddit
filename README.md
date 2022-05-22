@@ -15,7 +15,7 @@ This works by executing a daily cron job which:
 1. Fetches your posts/saved posts from reddit with [export-saved-reddit](https://github.com/csu/export-saved-reddit)
 2. Converts the fetched URL list to [libreddit](https://github.com/spikecodes/libreddit) URLs to avoid rate limiting
 3. Prunes the list to those it has not scraped before
-4. Stuffs the list into `archivebox add`
+4. Stuffs the list into `archivebox add`, and tags it the type of save ("reddit-saved", "reddit-comments", "reddit-submissions", "reddit-upvoted") (more tagging configurations available)
 
 ## Installation
 Currently, only deploying via docker (+docker on WSL) is supported, but more configurations and use-cases are being worked on.
@@ -48,10 +48,10 @@ Build and run the docker image. It may take a while to download. (This project i
 - Add support for more use-cases, ie non-docker installation, different archive directories, and other parameters
 - Enable media playback in SingleFile (saves you a click + allows comment reading while playback)
 - Fix some edge cases where media doesn't get saved (ie removed images still present in libreddit or gifs)
-- Add tagging support, this may require a PR to ArchiveBox
 - Make disabling 2FA unnecessary, probably will have to fork `export-saved-reddit`
 - Pipe dream: a mobile-friendly web UI in ArchiveBox that allows you to swipe between scrapes
 - Fix media download hanging randomly
+- Multi account support
 
 ## Donate
 Did I save you some time or give you some piece of mind?
