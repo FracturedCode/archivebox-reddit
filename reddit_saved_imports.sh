@@ -6,7 +6,7 @@
 
 export DISPLAY=:0.0
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/node/node_modules/.bin:/venv/bin
-export $(grep -v '^#' /home/archivebox/archivebox-reddit/.env | xargs)
+export $(grep -v '^#' /home/archivebox/archivebox-reddit/config/.env | xargs)
 
 BIN=/home/archivebox/archivebox-reddit
 LOG_FILE=$BIN/logs/archivebox-reddit-saved-$(date +"%Y-%m-%d").log
