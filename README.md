@@ -23,17 +23,17 @@ Currently, only deploying via docker (+docker on WSL) is supported, but more con
 First, configure your install:
 ``` Bash
 git clone https://github.com/FracturedCode/archivebox-reddit.git
-cd archivebox-reddit
+cd archivebox-reddit/config
 cp .env.example .env
 "${EDITOR:-nano}" .env
-cd docker
+cd ../docker
 cp .env.example .env
 "${EDITOR:-nano}" .env
 ```
 
 You can run this on an existing archivebox volume, but I'm not liable for data loss. Make sure you have a backup. Theoretically these scripts don't delete anything, but you never know.
 
-You must [acquire an api key](https://github.com/csu/export-saved-reddit#usage) from reddit, and enter your credentials in the `.env` file. Be sure to set good permissions on this file; it contains your reddit info! If you need, you can edit how this file is mounted in `run.sh`. Additionally, you will have to disable two factor. I am working on changing this.
+You must [acquire an api key](https://github.com/csu/export-saved-reddit#usage) from reddit, and enter your credentials in a `.account` file in `config/accounts`. You can put multiple accounts in the accounts folder ie `spez.account`, `alt.account`. Be sure to set good permissions on this file; it contains your reddit info! If you need, you can edit how this file is mounted in `run.sh`. Additionally, you will have to disable two factor. I am working on changing this.
 
 Build and run the docker image. It may take a while to download. (This project is tiny, but ArchiveBox is a 1.7GB image.):
 ``` Bash
@@ -53,7 +53,6 @@ Build and run the docker image. It may take a while to download. (This project i
 - Make disabling 2FA unnecessary, probably will have to fork `export-saved-reddit`
 - Pipe dream: a mobile-friendly web UI in ArchiveBox that allows you to swipe between scrapes
 - Fix media download hanging randomly
-- Multi account support
 - Retry Repl Unavailable
 
 ## Donate

@@ -10,3 +10,7 @@ echog() {
 	NOCOLOR='\033[0m'
 	echo -e "${GREEN}${@}${NOCOLOR}"
 }
+
+exportEnv() {
+	export $(grep -v '^#' $1 | xargs)
+}

@@ -1,0 +1,8 @@
+# Reddit login info. Be careful to escape characters if necessary.
+# https://github.com/csu/export-saved-reddit#usage
+REDDIT_USERNAME=
+REDDIT_PASSWORD=
+CLIENT_ID=
+CLIENT_SECRET=
+# In this file, you can put any other settings that appear in config/.env, ie SAVE_SUBMISSIONS
+# ; The account specific settings will override those defaults in config/.env

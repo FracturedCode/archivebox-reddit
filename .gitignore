@@ -5,3 +5,4 @@
 archivebox-reddit/
 *.sublime-workspace
 .env
+*.account

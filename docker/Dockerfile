@@ -11,5 +11,6 @@ COPY reddit_saved_imports.sh .
 COPY cookies-libredd-it.txt .
 COPY yt-dlp.sh .
 COPY format_csv.py .
+COPY shared.sh .
 
 RUN ./install.sh --dockerfile
