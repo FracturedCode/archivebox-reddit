@@ -46,6 +46,9 @@ Build and run the docker image. It may take a while to download. (This project i
 ./update.sh # in docker/
 ```
 
+## Migrate your reddit frontend
+Simply changing your REDDIT_FRONTEND variable will cause problems! See [MIGRATION.md](MIGRATION.md)
+
 ## Loose Roadmap
 - Add support for more use-cases, ie non-docker installation, different archive directories, and other parameters
 - Enable media playback in SingleFile (saves you a click + allows comment reading while playback)
@@ -54,6 +57,9 @@ Build and run the docker image. It may take a while to download. (This project i
 - Pipe dream: a mobile-friendly web UI in ArchiveBox that allows you to swipe between scrapes
 - Fix media download hanging randomly
 - Retry Repl Unavailable
+- cookies file work with any libreddit url
+- save history file frontend-agnostic
+- auto-upgrading save history file to prevent frontend migration issues
 
 ## Donate
 Did I save you some time or give you some piece of mind?

@@ -35,7 +35,6 @@ do
 	do
 		cd $BIN
 		CSV_FILE="export-$CSV.csv"
-		rm $CSV_FILE
 		echo Importing $CSV_FILE
 		LINKS=$(python format_csv.py $CSV_FILE)
 		touch $LOG_FILE
