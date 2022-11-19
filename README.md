@@ -47,7 +47,7 @@ Build and run the docker image. It may take a while to download. (This project i
 ```
 
 ## Migrate your reddit frontend
-Simply changing your REDDIT_FRONTEND variable will cause problems! See [MIGRATION.md](MIGRATION.md)
+You can change your `REDDIT_FRONTEND` in `config/.env` without worrying about any duplication.
 
 ## Loose Roadmap
 - Add support for more use-cases, ie non-docker installation, different archive directories, and other parameters
@@ -58,8 +58,6 @@ Simply changing your REDDIT_FRONTEND variable will cause problems! See [MIGRATIO
 - Fix media download hanging randomly
 - Retry Repl Unavailable
 - cookies file work with any libreddit url
-- save history file frontend-agnostic
-- auto-upgrading save history file to prevent frontend migration issues
 
 ## Donate
 Did I save you some time or give you some piece of mind?

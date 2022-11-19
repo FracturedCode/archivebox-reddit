@@ -36,7 +36,7 @@ do
 		cd $BIN
 		CSV_FILE="export-$CSV.csv"
 		echo Importing $CSV_FILE
-		LINKS=$(python format_csv.py $CSV_FILE)
+		LINKS=$(python format_csv.py $CSV_FILE $REDDIT_FRONTEND)
 		touch $LOG_FILE
 		cd /data
 		echo $LINKS | archivebox add --tag=$EXTRA_ARCHIVEBOX_TAGS,reddit-$CSV,$REDDIT_USERNAME >> $LOG_FILE
