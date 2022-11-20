@@ -8,7 +8,7 @@ if __name__=='__main__':
 	stripDomain = lambda y: re.sub("^https://.+?/", "", y)
 	try:
 		with open(saveHistoryPath, mode='r') as saveHistoryFile:
-			saveHistory = [stripDomain(line) for line in saveHistoryFile.readlines()]
+			saveHistory = [stripDomain(line) for line in saveHistoryFile.read().splitlines()]
 	except FileNotFoundError:
 		pass
 	with open(sys.argv[1], mode='r') as exportFile:

@@ -6,3 +6,4 @@ archivebox-reddit/
 *.sublime-workspace
 .env
 *.account
+*.account.disabled

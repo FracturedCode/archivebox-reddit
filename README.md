@@ -59,6 +59,7 @@ You can change your `REDDIT_FRONTEND` in `config/.env` without worrying about an
 - Retry Repl Unavailable
 - cookies file work with any libreddit url
 - use sqlite instead of history file
+- configurable cron job on install
 
 ## Donate
 Did I save you some time or give you some piece of mind?
