@@ -3,12 +3,12 @@ import re
 import sys
 
 if __name__=='__main__':
-	saveHistory = {}
+	saveHistory = []
 	saveHistoryPath = '/data/archivebox_reddit_save_history.txt'
-	stripDomain = lambda y: re.sub("^https://.*/", "", y)
+	stripDomain = lambda y: re.sub("^https://.+?/", "", y)
 	try:
 		with open(saveHistoryPath, mode='r') as saveHistoryFile:
-			saveHistory = set(stripDomain(line) for line in saveHistoryFile.readlines())
+			saveHistory = [stripDomain(line) for line in saveHistoryFile.readlines()]
 	except FileNotFoundError:
 		pass
 	with open(sys.argv[1], mode='r') as exportFile:
