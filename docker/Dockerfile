@@ -11,6 +11,6 @@ COPY reddit_saved_imports.sh .
 COPY cookies-libredd-it.txt .
 COPY yt-dlp.sh .
 COPY format_csv.py .
-COPY shared.sh .
+COPY docker/archivebox_reddit_entrypoint.sh .
 
 RUN ./install.sh --dockerfile
