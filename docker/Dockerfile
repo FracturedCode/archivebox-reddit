@@ -8,7 +8,6 @@ COPY export-saved-reddit/requirements.txt .
 COPY install.sh .
 COPY shared.sh .
 COPY reddit_saved_imports.sh .
-COPY cookies-libredd-it.txt .
 COPY yt-dlp.sh .
 COPY format_csv.py .
 COPY docker/archivebox_reddit_entrypoint.sh .

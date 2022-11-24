@@ -57,7 +57,6 @@ You can change your `REDDIT_FRONTEND` in `config/.env` without worrying about an
 - Pipe dream: a mobile-friendly web UI in ArchiveBox that allows you to swipe between scrapes
 - Fix media download hanging randomly
 - Retry Repl Unavailable
-- cookies file work with any libreddit url
 - use sqlite instead of history file
 - configurable cron job on install
 

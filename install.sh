@@ -37,7 +37,7 @@ pip install -r requirements.txt
 echog "Installing cron job for every 24 hours"
 export ARCHIVEBOX_BIN=/home/archivebox/archivebox-reddit/
 mkdir -p $ARCHIVEBOX_BIN
-INSTALL_FILES=(reddit_saved_imports.sh format_csv.py export_saved.py cookies-libredd-it.txt yt-dlp.sh shared.sh)
+INSTALL_FILES=(reddit_saved_imports.sh format_csv.py export_saved.py yt-dlp.sh shared.sh)
 for file in "${INSTALL_FILES[@]}"
 do
 	cp $file $ARCHIVEBOX_BIN

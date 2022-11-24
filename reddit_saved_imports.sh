@@ -20,6 +20,9 @@ do
 	exportEnv config/.env
 	exportEnv $ACCOUNT
 
+	cat $COOKIES_FILE | sed "s/^ScriptReplaceFrontendDomain/$REDDIT_FRONTEND/g" > interpolated-cookies.txt
+	COOKIES_FILE=$(realpath interpolated-cookies.txt)
+
 	echo "Fetching from reddit"
 	python export_saved.py --username $REDDIT_USERNAME --password $REDDIT_PASSWORD --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --all
 
