@@ -53,7 +53,7 @@ echo "0 0 * * * archivebox ${ARCHIVEBOX_BIN}reddit_saved_imports.sh > /home/arch
 echog Modifying entrypoint
 cp archivebox_reddit_entrypoint.sh /app/bin/
 chmod 700 /app/bin/archivebox_reddit_entrypoint.sh
-sed '2i/app/bin/archivebox_reddit_entrypoint.sh' /app/bin/docker_entrypoint.sh > /tmp/docker_entrypoint.sh
+sed '2iexport CRON_TIMING && export TZ && /app/bin/archivebox_reddit_entrypoint.sh' /app/bin/docker_entrypoint.sh > /tmp/docker_entrypoint.sh
 mv /tmp/docker_entrypoint.sh /app/bin/docker_entrypoint.sh
 chmod 700 /app/bin/docker_entrypoint.sh
 
