@@ -41,6 +41,10 @@ INSTALL_FILES=(reddit_saved_imports.sh format_csv.py export_saved.py yt-dlp.sh s
 for file in "${INSTALL_FILES[@]}"
 do
 	cp $file $ARCHIVEBOX_BIN
+	if [ "$1" == "--dockerfile" ]
+	then
+		rm $file
+	fi
 done
 mkdir -p ${ARCHIVEBOX_BIN}/logs
 chown -R archivebox:archivebox $ARCHIVEBOX_BIN
